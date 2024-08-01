@@ -15,7 +15,7 @@ document.querySelector('.card-form').addEventListener('click', cancelEdit);
 
 // Get Posts
 function getPosts() {
-  http.get('http://localhost:3000/posts')
+  http.get('https://ahmed99125.github.io/microposts/posts')
     .then(data => ui.showPosts(data))
     .catch(err => console.log(err));
 }
@@ -34,7 +34,7 @@ function submitPost(e) {
 
     if (id == '') {
       // Create Post
-      http.post('http://localhost:3000/posts', data)
+      http.post('https://ahmed99125.github.io/microposts/posts', data)
       .then(data => {
         ui.showAlert('Post added', 'alert alert-success');
         ui.clearFields();
@@ -42,7 +42,7 @@ function submitPost(e) {
       })
       .catch(err => console.log(err));
     } else {
-      http.put(`http://localhost:3000/posts/${id}`, data)
+      http.put(`https://ahmed99125.github.io/microposts/posts/${id}`, data)
       .then(data => {
         ui.showAlert('Post updated', 'alert alert-success');
         ui.changeState('add');
@@ -57,7 +57,7 @@ function deletePost(e) {
   if (e.target.parentElement.classList.contains('delete')) {
     e.preventDefault();
     
-    http.delete(`http://localhost:3000/posts/${e.target.parentElement.getAttribute('data-id')}`)
+    http.delete(`https://ahmed99125.github.io/microposts/posts/${e.target.parentElement.getAttribute('data-id')}`)
       .then(data => {
         ui.showAlert('post Deleted', 'alert alert-success');
         getPosts();
